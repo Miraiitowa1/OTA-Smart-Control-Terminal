@@ -2,7 +2,7 @@
 
 ### FreeRTOS的核⼼思想是将系统划分为多个独⽴的任务，每个任务都有⾃⼰的代码和堆栈空间，可以独⽴运⾏。通过任务管理器，可以创建、删除、挂起、恢复和切换任务。任务的调度是由FreeRTOS内核完成的，它使⽤优先级和时间⽚轮转等调度算法，确保⾼优先级任务得到及时执⾏。除了任务管理和调度，FreeRTOS还提供了内存管理功能，可以动态分配和释放内存，以满⾜任务的需求。此外，FreeRTOS还⽀持信号量、消息队列和互斥量等同步机制，⽤于任务间的通信和资源共享。FreeRTOS 是⽤ C 和汇编来写的，其中绝⼤部分都是⽤ C 语⾔编写的，只有极少数的与处理器密切相关的部分代码才是⽤汇编写的,FreeRTOS 结构简洁，可读性很强
 
-### 1. 任务管理task
+### 1. 任务管理Task
 #### 在FreeRTOS中，任务是系统的基本执⾏单位。每个任务都有⾃⼰的代码和堆栈空间，可以独⽴运⾏。通过任务管理器，可以创建、删除、挂起、恢复和切换任务 任务的调度是由FreeRTOS内核完成的。它使⽤优先级和时间⽚轮转等调度算法，确保⾼优先级任务优先执⾏，并且每个任务都有公平的执⾏机会
 
 #### 任务创建与启动 
@@ -119,11 +119,50 @@ osStatus osRecursiveMutexRelease (osMutexId mutex_id)
 ```
 ---
 
+### 3. 消息队列Queue
+#### FreeRTOS的消息队列是⼀种⽤于任务间通信的同步机制。它提供了⼀种简单、可靠的⽅式，让任务之间可以传递数据和消息，以实现资源共享和协同⼯作。消息队列的基本原理是，⼀个任务可以将⼀个消息发送到消息队列中，⽽另⼀个任务则可以从消息队列中接收该消息。发送和接收消息的任务可以是同⼀个任务，也可以是不同的任务。当消息队列为空时，接收任务会被挂起，直到有新的消息到达为⽌。消息队列还⽀持阻塞模式和超时模式。在阻塞模式下，如果队列已满或为空，发送或接收任务会被挂起，直到队列有⾜够的空间或有新的消息到达为⽌。在超时模式下，如果队列已满或为空，发送或接收任务会等待⼀段时间，如果超时仍未有⾜够的空间或新的消息到达，则函数会返回错误
 
+#### 消息队列创建与删除
+**osMessageQId**: 队列ID
+```c
+/// Message ID identifies the message queue (pointer to a message queue control block).
+/// \note CAN BE CHANGED: \b os_messageQ_cb is implementation specific in every CMSIS-RTOS.
+typedef QueueHandle_t osMessageQId;
+```
 
+**osMessageCreate**: 使⽤动态内存的⽅式创建⼀个新的队列
+```c
+osMessageQId osMessageCreate (const osMessageQDef_t *queue_def, osThreadId thread_id)
+```
+- queue_def： 引⽤由osMessageQDef定义的队列
 
+**osMessageDelete**: 队列删除函数是根据消息队列ID直接删除的，删除之后这个消息队列的所有信息都会被系统回收清空，不能再次使⽤这个消息队列了
+```c
+osStatus osMessageDelete (osMessageQId queue_id)
+```
 
+#### 消息发送与接收
+**osMessagePut**: ⽤于向队列尾部发送⼀个队列消息。消息以拷⻉的形式⼊队，⽽不是以引⽤的形式。可⽤在中断服务程序中
+```c
+osStatus osMessagePut (osMessageQId queue_id, uint32_t info, uint32_t millisec)
+```
+- info： 要发送的数据， ⼤⼩4字节
 
+**osMessageGet**: ⽤于从⼀个队列中接收消息并把消息从队列中删除。接收的消息是以拷⻉的形式进⾏的，所以我们必须提供⼀个⾜够⼤空间的缓冲区。具体能够拷⻉多少数据到缓冲区，这个在队列创建的时候已经设定。可⽤在中断服务程序中
+```c
+osEvent osMessageGet (osMessageQId queue_id, uint32_t millisec)
+```
+
+**osMessagePeek**: osMessagePeek() 也是从从队列中接收数据单元，不同的是并不从队列中删出接收到的单元。osMessagePeek() 从队列⾸接收到数据后，不会修改队列中的数据，也不会改变数据在队列中的存储序顺。可⽤在中断服务程序中
+```c
+osEvent osMessagePeek (osMessageQId queue_id, uint32_t millisec)
+```
+
+#### 查询消息个数
+**osMessageWaiting**: ⽤于查询队列中当前有效数据单元个数
+```c
+uint32_t osMessageWaiting(osMessageQId queue_id)
+```
 
 
 
