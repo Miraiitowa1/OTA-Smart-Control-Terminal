@@ -72,3 +72,64 @@ typedef enum {
     osThreadError = 0x7FFFFFFF
 } osThreadState;
 ```
+---
+
+### 2. 互斥量Mutex
+#### 互斥量⼜称互斥信号量（本质是信号量），是⼀种特殊的⼆值信号量，它和信号量不同的是，它⽀持互斥量所有权、递归访问以及防⽌优先级翻转的特性，⽤于实现对临界资源的独占式处理。任意时刻互斥量的状态只有两种，开锁或闭锁。当互斥量被任务持有时，该互斥量处于闭锁状态，这个任务获得互斥量的所有权。当该任务释放这个互斥量时，该互斥量处于开锁状态，任务失去该互斥量的所有权。如果想要⽤于实现同步（任务之间或者任务与中断之间），⼆值信号量或许是更好的选择，虽然互斥量也可以⽤于任务与任务、任务与中断的同步，但是互斥量更多的是⽤于保护资源的互锁
+
+#### 互斥量的创建
+**osMutexCreate**：创建⼀个互斥量，并返回⼀个互斥量ID
+```c
+osMutexId osMutexCreate (const osMutexDef_t *mutex_def)
+```
+- mutex_def： 引⽤由osMutexDef定义的互斥量
+
+**osRecursiveMutexCreate**: 于创建⼀个递归互斥量，不是递归的互斥量由函数 osMutexCreate() 创建，且只能被同⼀个任务获取⼀次，如果同⼀个任务想再次获取则会失败。递归信号量则相反，它可以被同⼀个任务获取很多次，获取多少次就需要释放多少次。递归信号量与互斥量⼀样，都实现了优先级继承机制，可以减少优先级反转的反⽣
+```c
+osMutexId osRecursiveMutexCreate (const osMutexDef_t *mutex_def)
+```
+
+#### 删除互斥量
+**osMutexDelete**: 删除⼀个互斥量
+```c
+osStatus osMutexDelete (osMutexId mutex_id)
+```
+
+#### 获取互斥量
+**osMutexWait**: 获取互斥量，但是递归互斥量并不能使⽤这个 API 函数获取
+```c
+osStatus osMutexWait (osMutexId mutex_id, uint32_t millisec)
+```
+- millisec：等待信号量可⽤的最⼤超时时间，单位为 tick（即系统节拍周期）。如果宏 INCLUDE_vTaskSuspend 定义为 1 且形参xTicksToWait 设置为 portMAX_DELAY ，则任务将⼀直阻塞在该信号量上（即没有超时时间）
+
+**osRecursiveMutexWait**: 获取递归互斥量的宏，与互斥量的获取函数⼀样，osMutexWait()也是⼀个宏定义，它最终使⽤现有的队列机制，实际执⾏的函数是xQueueTakeMutexRecursive() 。 获取递归互斥量之前必须由 osRecursiveMutexCreate() 这个函数创建。要注意的是该函数不能⽤于获取由函数 osMutexCreate() 创建的互斥量
+```c
+osStatus osRecursiveMutexWait (osMutexId mutex_id, uint32_t millisec)
+```
+
+#### 释放互斥量
+**osMutexRelease**: 释放互斥量，但不能释放由函数 osRecursiveMutexCreate() 创建的递归互斥量
+```c
+osStatus osMutexRelease (osMutexId mutex_id)
+```
+
+**osRecursiveMutexRelease**: 释放⼀个递归互斥量。已经获取递归互斥量的任务可以重复获取该递归互斥量。使⽤ osRecursiveMutexWait() 函数成功获取⼏次递归互斥量，就要使⽤ osRecursiveMutexRelease() 函数返还⼏次，在此之前递归互斥量都处于⽆效状态，别的任务就⽆法获取该递归互斥量。使⽤该函数接⼝时，只有已持有互斥量所有权的任务才能释放它，每释放⼀该递归互斥量，它的计数值就减 1。当该互斥量的计数值为 0 时（即持有任务已经释放所有的持有操作），互斥量则变为开锁状态，等待在该互斥量上的任务将被唤醒。如果任务的优先级被互斥量的优先级翻转机制临时提升，那么当互斥量被释放后，任务的优先级将恢复为原本设定的优先级
+```c
+osStatus osRecursiveMutexRelease (osMutexId mutex_id)
+```
+---
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

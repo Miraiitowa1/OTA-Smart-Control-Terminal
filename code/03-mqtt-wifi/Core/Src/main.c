@@ -110,45 +110,49 @@ int main(void)
   MX_USART3_UART_Init();
   MX_TIM4_Init();
   /* USER CODE BEGIN 2 */
-  HAL_Delay(400);
-  printf("Uart1 init is ok\n");
-  printf("Mqtt Test\n");  
-  //EEPROM_Test();
-  OLED_Init();
-  OLED_CLS(); // 清除屏幕显示
-  OLED_ShowStr(16,0, (unsigned char*)"MQTT Control", 2);	
-  AHT20_Init();
-  INA226_Init();
-  
-  __HAL_UART_ENABLE_IT(&huart3, UART_IT_IDLE); //使能串UART3 IDLE(空闲)中断
-  HAL_UART_Receive_DMA(&huart3, RX3_Buf, DMA_BUF_SIZE); //设置DMA传输，将uart3的数据搬运到RX3_Buf中
-  
-  //连接wifi
-  ESP8266_Connect_WIFI();
-  //连接mqtt服务器
-  if(MQTT_WIFI_Connect_Server() == SET)
-  {
-	  MQTT_DownLoad_Flag = 1;	//开启解析服务器的标志位
-	  printf("MQTT Server connected success\n");
-  }
-  
-  HAL_TIM_Base_Start_IT(&htim1); // 使能定时器1中断 
-  Modbus_Init();
-  
+	HAL_Delay(400); // 这里延时是给esp8266 打印日志使用的
+	// 经过测试 , 400ms时, 日志输出就没有了, 为了安全,我们设置400ms 以上的延时
+	// 等待esp8266 输出初始化日志, 要不然一旦开启uart3就会触发dma中断,早期的esp8266初始化的数据波特率不是
+	// 115200, 会造成uart3的错误,要在uart3中做错误恢复
+	
+	printf("Uart1 init is ok\n");
+	printf("MQTT Test\n");  
+	//EEPROM_Test();
+	OLED_Init();
+	OLED_CLS(); // 清除屏幕显示
+	OLED_ShowStr(16,0, (unsigned char*)"MQTT Control", 2);	
+	AHT20_Init();
+	INA226_Init();
+	
+	__HAL_UART_ENABLE_IT(&huart3, UART_IT_IDLE); //使能串UART3 IDLE(空闲)中断
+	HAL_UART_Receive_DMA(&huart3, RX3_Buf, DMA_BUF_SIZE); //设置DMA传输，将uart3的数据搬运到RX3_Buf中
+	
+	
+	// 连接wifi 
+	ESP8266_Connect_WIFI(); 
+	// 连接mqtt服务器
+	if( ESP8266_Connect_MQTTServer() == SET) 
+	{
+			MQTT_Download_Flag = 1 ; //  开启解析 服务器数据的标志位
+			printf("MQTT 服务器连接成功  \n");
+	}
+	
+	HAL_TIM_Base_Start_IT(&htim1); // 使能定时器1中断 
+	Modbus_Init();
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-	eMBPoll();// 轮训查询	
-	Modbus_Parse(); 
-    if(MQTT_UPLoad_Flag)	//每5s执行一次
-	{
-		MQTT_SendData();
-		MQTT_UPLoad_Flag = 0;
-		printf("5s time	up\n");
-	}
+		eMBPoll();// 轮训查询	
+		Modbus_Parse(); 
+		
+		if(MQTT_UPLoad_Flag) // 每隔5秒执行1次 
+		{
+				MQTT_UPLoad_Flag = 0 ;
+				MQTT_SendData();
+		}
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */

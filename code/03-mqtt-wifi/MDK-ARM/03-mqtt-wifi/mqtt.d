@@ -42,5 +42,4 @@
 03-mqtt-wifi\mqtt.o: ../Core/Inc/usart.h
 03-mqtt-wifi\mqtt.o: ../Core/Inc/oled.h
 03-mqtt-wifi\mqtt.o: ../Core/Inc/modbus.h
-03-mqtt-wifi\mqtt.o: ../Core/Inc/cJSON.h
-03-mqtt-wifi\mqtt.o: ../Core/Inc/gpio.h
+03-mqtt-wifi\mqtt.o: ../Core/Inc/cjson.h

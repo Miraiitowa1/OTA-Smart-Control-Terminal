@@ -275,7 +275,7 @@ void USART3_IRQHandler(void)
   /* USER CODE END USART3_IRQn 0 */
   HAL_UART_IRQHandler(&huart3);
   /* USER CODE BEGIN USART3_IRQn 1 */
-  USER_UART_IRQHandler(&huart3);       //新添加的函数，用来处理串口空闲中断
+	USER_UART_IRQHandler(&huart3);       //新添加的函数，用来处理串口空闲中断
   /* USER CODE END USART3_IRQn 1 */
 }
 
@@ -346,6 +346,7 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 	}
 }
 
+
 // DMA 接收到一半的中断 
 void HAL_UART_RxHalfCpltCallback(UART_HandleTypeDef *huart)
 {
@@ -354,7 +355,6 @@ void HAL_UART_RxHalfCpltCallback(UART_HandleTypeDef *huart)
 			uint8_t Length  =  DMA_BUF_SIZE/2 - RX3_Offset ; 
 			//printf("HLength=%d\n",Length);
 			
-
 			if(Enqueue_Bytes(&QUART3,RX3_Buf+RX3_Offset,Length) <0){
 					printf("FIFO Full\n");
 			}
@@ -365,9 +365,10 @@ void HAL_UART_RxHalfCpltCallback(UART_HandleTypeDef *huart)
 // DMA传输完成中断   , 就是接收满了的时候 触发中断
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 {
-	if(huart->Instance == USART3)
+
+		if(huart->Instance == USART3)
     {
-        uint8_t Length  =  DMA_BUF_SIZE - RX3_Offset ; 
+        uint8_t Length  =  DMA_BUF_SIZE - RX3_Offset ;  
 				if(Enqueue_Bytes(&QUART3,RX3_Buf+RX3_Offset,Length) <0){
 					printf("FIFO Full\n");
 				}
@@ -379,7 +380,7 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 // 用户自定义的函数 ， 处理串口空闲中断
 void USER_UART_IRQHandler(UART_HandleTypeDef *huart)
 {
-	if(huart->Instance == USART3)                                  //判断是否是串口3
+		if(huart->Instance == USART3)                                  //判断是否是串口3
     {
 			  if((__HAL_UART_GET_FLAG(huart, UART_FLAG_FE) ||  
             __HAL_UART_GET_FLAG(huart, UART_FLAG_NE) )== SET )   //判断是否是帧错误或者噪音中断
@@ -402,7 +403,6 @@ void USER_UART_IRQHandler(UART_HandleTypeDef *huart)
             HAL_TIM_Base_Start_IT(&htim4); // 使能定时器4中断 
 						if(Enqueue_Bytes(&QUART3,RX3_Buf+RX3_Offset,Length) <0){
 							printf("FIFO Full\n");}
-						
             RX3_Offset += Length; 
 					  //printf("ILength=%d\n",Length);					   
         }
@@ -410,10 +410,12 @@ void USER_UART_IRQHandler(UART_HandleTypeDef *huart)
 		
 }
 
+
+
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
 	
-	static uint32_t Count5000ms = 0; 
+	static uint32_t Count5000ms = 0  ; 
 	// 定时500ms, 产生中断 
 	if(htim->Instance == TIM1) 
 	{	
@@ -422,11 +424,11 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 			Count5000ms++ ; 
 			if(Count5000ms >= 10 )  
 			{
-				Count5000ms = 0 ; 
-				MQTT_UPLoad_Flag = 1; 
+					Count5000ms = 0 ; 
+					MQTT_UPLoad_Flag = 1; 
 			}
 	}
-	// 定时10ms, 产生中断 
+		// 定时10ms, 产生中断 
 	else if(htim->Instance == TIM4) 
 	{
 		// 关闭定时器  ， 开始处理接收的数据
@@ -435,6 +437,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 	}
 	
 }
+
 
 
 

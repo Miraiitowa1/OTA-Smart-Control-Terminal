@@ -1,0 +1,15 @@
+05-mqtt-freertos\mb.o: ..\FreeModbus\mb.c
+05-mqtt-freertos\mb.o: E:\Keil\ARM\ARMCC\Bin\..\include\stdlib.h
+05-mqtt-freertos\mb.o: E:\Keil\ARM\ARMCC\Bin\..\include\string.h
+05-mqtt-freertos\mb.o: ..\FreeModbus\port.h
+05-mqtt-freertos\mb.o: E:\Keil\ARM\ARMCC\Bin\..\include\assert.h
+05-mqtt-freertos\mb.o: E:\Keil\ARM\ARMCC\Bin\..\include\inttypes.h
+05-mqtt-freertos\mb.o: E:\Keil\ARM\ARMCC\Bin\..\include\stdint.h
+05-mqtt-freertos\mb.o: ..\FreeModbus\mb.h
+05-mqtt-freertos\mb.o: ..\FreeModbus\mbport.h
+05-mqtt-freertos\mb.o: ..\FreeModbus\mbproto.h
+05-mqtt-freertos\mb.o: ..\FreeModbus\mbconfig.h
+05-mqtt-freertos\mb.o: ..\FreeModbus\mbframe.h
+05-mqtt-freertos\mb.o: ..\FreeModbus\mbfunc.h
+05-mqtt-freertos\mb.o: ..\FreeModbus\mbrtu.h
+05-mqtt-freertos\mb.o: ..\FreeModbus\mbascii.h

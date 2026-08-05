@@ -26,9 +26,9 @@
 
 uint8_t RX1_Offset = 0 ;  // 计算偏移量 , 用来计算接收数据长度的
 uint8_t RX1_Buf[DMA_BUF_SIZE]; // 接收数据存放的数组
-uint8_t RX3_Offset = 0 ;  // 计算偏移量 , 用来计算接收数据长度的
-uint8_t RX3_Buf[DMA_BUF_SIZE]; // 接收数据存放的数组
 
+uint8_t RX3_Offset = 0 ;  // 计算偏移量 , 用来计算接收数据长度的
+uint8_t RX3_Buf[DMA_BUF_SIZE];
 /* USER CODE END 0 */
 
 UART_HandleTypeDef huart1;
