@@ -1,8 +1,8 @@
 07-canopen-freertos\wifi4g.o: ..\Core\Src\wifi4g.c
-07-canopen-freertos\wifi4g.o: D:\Software\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
-07-canopen-freertos\wifi4g.o: D:\Software\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
-07-canopen-freertos\wifi4g.o: D:\Software\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
-07-canopen-freertos\wifi4g.o: D:\Software\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+07-canopen-freertos\wifi4g.o: E:\Keil\ARM\ARMCC\Bin\..\include\stdio.h
+07-canopen-freertos\wifi4g.o: E:\Keil\ARM\ARMCC\Bin\..\include\stdlib.h
+07-canopen-freertos\wifi4g.o: E:\Keil\ARM\ARMCC\Bin\..\include\string.h
+07-canopen-freertos\wifi4g.o: E:\Keil\ARM\ARMCC\Bin\..\include\stdint.h
 07-canopen-freertos\wifi4g.o: ../Core/Inc/stm32f1xx_it.h
 07-canopen-freertos\wifi4g.o: ../Core/Inc/wifi4g.h
 07-canopen-freertos\wifi4g.o: ../Core/Inc/main.h
@@ -19,7 +19,7 @@
 07-canopen-freertos\wifi4g.o: ../Drivers/CMSIS/Device/ST/STM32F1xx/Include/system_stm32f1xx.h
 07-canopen-freertos\wifi4g.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h
 07-canopen-freertos\wifi4g.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h
-07-canopen-freertos\wifi4g.o: D:\Software\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+07-canopen-freertos\wifi4g.o: E:\Keil\ARM\ARMCC\Bin\..\include\stddef.h
 07-canopen-freertos\wifi4g.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc_ex.h
 07-canopen-freertos\wifi4g.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_gpio.h
 07-canopen-freertos\wifi4g.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_gpio_ex.h

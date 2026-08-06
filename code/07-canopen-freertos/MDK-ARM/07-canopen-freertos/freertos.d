@@ -1,7 +1,7 @@
 07-canopen-freertos\freertos.o: ../Core/Src/freertos.c
 07-canopen-freertos\freertos.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h
-07-canopen-freertos\freertos.o: D:\Software\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
-07-canopen-freertos\freertos.o: D:\Software\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+07-canopen-freertos\freertos.o: E:\Keil\ARM\ARMCC\Bin\..\include\stddef.h
+07-canopen-freertos\freertos.o: E:\Keil\ARM\ARMCC\Bin\..\include\stdint.h
 07-canopen-freertos\freertos.o: ../Core/Inc/FreeRTOSConfig.h
 07-canopen-freertos\freertos.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h
 07-canopen-freertos\freertos.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h
@@ -45,8 +45,8 @@
 07-canopen-freertos\freertos.o: ../Canfestival/Inc/timers.h
 07-canopen-freertos\freertos.o: ../Canfestival/Inc/stm32/timerscfg.h
 07-canopen-freertos\freertos.o: ../Canfestival/Inc/stm32/applicfg.h
-07-canopen-freertos\freertos.o: D:\Software\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
-07-canopen-freertos\freertos.o: D:\Software\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+07-canopen-freertos\freertos.o: E:\Keil\ARM\ARMCC\Bin\..\include\string.h
+07-canopen-freertos\freertos.o: E:\Keil\ARM\ARMCC\Bin\..\include\stdio.h
 07-canopen-freertos\freertos.o: ../Core/Inc/can.h
 07-canopen-freertos\freertos.o: ../Canfestival/Inc/data.h
 07-canopen-freertos\freertos.o: ../Canfestival/Inc/def.h
@@ -71,8 +71,8 @@
 07-canopen-freertos\freertos.o: ../Core/Inc/modbus.h
 07-canopen-freertos\freertos.o: ../FreeModbus/mb.h
 07-canopen-freertos\freertos.o: ../FreeModbus/port.h
-07-canopen-freertos\freertos.o: D:\Software\Keil_v5\ARM\ARMCC\Bin\..\include\assert.h
-07-canopen-freertos\freertos.o: D:\Software\Keil_v5\ARM\ARMCC\Bin\..\include\inttypes.h
+07-canopen-freertos\freertos.o: E:\Keil\ARM\ARMCC\Bin\..\include\assert.h
+07-canopen-freertos\freertos.o: E:\Keil\ARM\ARMCC\Bin\..\include\inttypes.h
 07-canopen-freertos\freertos.o: ../FreeModbus/mbport.h
 07-canopen-freertos\freertos.o: ../FreeModbus/mbproto.h
 07-canopen-freertos\freertos.o: ../Core/Inc/mqtt.h

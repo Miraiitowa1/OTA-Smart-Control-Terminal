@@ -1,10 +1,10 @@
 07-canopen-freertos\mbutils.o: ..\FreeModbus\mbutils.c
-07-canopen-freertos\mbutils.o: D:\Software\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
-07-canopen-freertos\mbutils.o: D:\Software\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+07-canopen-freertos\mbutils.o: E:\Keil\ARM\ARMCC\Bin\..\include\stdlib.h
+07-canopen-freertos\mbutils.o: E:\Keil\ARM\ARMCC\Bin\..\include\string.h
 07-canopen-freertos\mbutils.o: ..\FreeModbus\port.h
-07-canopen-freertos\mbutils.o: D:\Software\Keil_v5\ARM\ARMCC\Bin\..\include\assert.h
-07-canopen-freertos\mbutils.o: D:\Software\Keil_v5\ARM\ARMCC\Bin\..\include\inttypes.h
-07-canopen-freertos\mbutils.o: D:\Software\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+07-canopen-freertos\mbutils.o: E:\Keil\ARM\ARMCC\Bin\..\include\assert.h
+07-canopen-freertos\mbutils.o: E:\Keil\ARM\ARMCC\Bin\..\include\inttypes.h
+07-canopen-freertos\mbutils.o: E:\Keil\ARM\ARMCC\Bin\..\include\stdint.h
 07-canopen-freertos\mbutils.o: ..\FreeModbus\mb.h
 07-canopen-freertos\mbutils.o: ..\FreeModbus\mbport.h
 07-canopen-freertos\mbutils.o: ..\FreeModbus\mbproto.h

@@ -1,8 +1,8 @@
 07-canopen-freertos\event_groups.o: ../Middlewares/Third_Party/FreeRTOS/Source/event_groups.c
-07-canopen-freertos\event_groups.o: D:\Software\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+07-canopen-freertos\event_groups.o: E:\Keil\ARM\ARMCC\Bin\..\include\stdlib.h
 07-canopen-freertos\event_groups.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h
-07-canopen-freertos\event_groups.o: D:\Software\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
-07-canopen-freertos\event_groups.o: D:\Software\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+07-canopen-freertos\event_groups.o: E:\Keil\ARM\ARMCC\Bin\..\include\stddef.h
+07-canopen-freertos\event_groups.o: E:\Keil\ARM\ARMCC\Bin\..\include\stdint.h
 07-canopen-freertos\event_groups.o: ../Core/Inc/FreeRTOSConfig.h
 07-canopen-freertos\event_groups.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h
 07-canopen-freertos\event_groups.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h
@@ -14,8 +14,8 @@
 07-canopen-freertos\event_groups.o: ../Canfestival/Inc/timers.h
 07-canopen-freertos\event_groups.o: ../Canfestival/Inc/stm32/timerscfg.h
 07-canopen-freertos\event_groups.o: ../Canfestival/Inc/stm32/applicfg.h
-07-canopen-freertos\event_groups.o: D:\Software\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
-07-canopen-freertos\event_groups.o: D:\Software\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+07-canopen-freertos\event_groups.o: E:\Keil\ARM\ARMCC\Bin\..\include\string.h
+07-canopen-freertos\event_groups.o: E:\Keil\ARM\ARMCC\Bin\..\include\stdio.h
 07-canopen-freertos\event_groups.o: ../Core/Inc/can.h
 07-canopen-freertos\event_groups.o: ../Core/Inc/main.h
 07-canopen-freertos\event_groups.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h

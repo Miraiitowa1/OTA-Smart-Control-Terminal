@@ -1,9 +1,9 @@
 07-canopen-freertos\queue.o: ../Middlewares/Third_Party/FreeRTOS/Source/queue.c
-07-canopen-freertos\queue.o: D:\Software\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
-07-canopen-freertos\queue.o: D:\Software\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+07-canopen-freertos\queue.o: E:\Keil\ARM\ARMCC\Bin\..\include\stdlib.h
+07-canopen-freertos\queue.o: E:\Keil\ARM\ARMCC\Bin\..\include\string.h
 07-canopen-freertos\queue.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h
-07-canopen-freertos\queue.o: D:\Software\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
-07-canopen-freertos\queue.o: D:\Software\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+07-canopen-freertos\queue.o: E:\Keil\ARM\ARMCC\Bin\..\include\stddef.h
+07-canopen-freertos\queue.o: E:\Keil\ARM\ARMCC\Bin\..\include\stdint.h
 07-canopen-freertos\queue.o: ../Core/Inc/FreeRTOSConfig.h
 07-canopen-freertos\queue.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h
 07-canopen-freertos\queue.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h

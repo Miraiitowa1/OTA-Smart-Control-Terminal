@@ -1,8 +1,8 @@
 07-canopen-freertos\list.o: ../Middlewares/Third_Party/FreeRTOS/Source/list.c
-07-canopen-freertos\list.o: D:\Software\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+07-canopen-freertos\list.o: E:\Keil\ARM\ARMCC\Bin\..\include\stdlib.h
 07-canopen-freertos\list.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h
-07-canopen-freertos\list.o: D:\Software\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
-07-canopen-freertos\list.o: D:\Software\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+07-canopen-freertos\list.o: E:\Keil\ARM\ARMCC\Bin\..\include\stddef.h
+07-canopen-freertos\list.o: E:\Keil\ARM\ARMCC\Bin\..\include\stdint.h
 07-canopen-freertos\list.o: ../Core/Inc/FreeRTOSConfig.h
 07-canopen-freertos\list.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h
 07-canopen-freertos\list.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h

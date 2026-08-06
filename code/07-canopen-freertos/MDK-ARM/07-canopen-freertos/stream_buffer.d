@@ -1,8 +1,8 @@
 07-canopen-freertos\stream_buffer.o: ../Middlewares/Third_Party/FreeRTOS/Source/stream_buffer.c
-07-canopen-freertos\stream_buffer.o: D:\Software\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
-07-canopen-freertos\stream_buffer.o: D:\Software\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+07-canopen-freertos\stream_buffer.o: E:\Keil\ARM\ARMCC\Bin\..\include\stdint.h
+07-canopen-freertos\stream_buffer.o: E:\Keil\ARM\ARMCC\Bin\..\include\string.h
 07-canopen-freertos\stream_buffer.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h
-07-canopen-freertos\stream_buffer.o: D:\Software\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+07-canopen-freertos\stream_buffer.o: E:\Keil\ARM\ARMCC\Bin\..\include\stddef.h
 07-canopen-freertos\stream_buffer.o: ../Core/Inc/FreeRTOSConfig.h
 07-canopen-freertos\stream_buffer.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h
 07-canopen-freertos\stream_buffer.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h

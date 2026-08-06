@@ -1,12 +1,12 @@
 07-canopen-freertos\port.o: ..\FreeModbus\port.c
 07-canopen-freertos\port.o: ..\FreeModbus\mb.h
 07-canopen-freertos\port.o: ..\FreeModbus\port.h
-07-canopen-freertos\port.o: D:\Software\Keil_v5\ARM\ARMCC\Bin\..\include\assert.h
-07-canopen-freertos\port.o: D:\Software\Keil_v5\ARM\ARMCC\Bin\..\include\inttypes.h
-07-canopen-freertos\port.o: D:\Software\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+07-canopen-freertos\port.o: E:\Keil\ARM\ARMCC\Bin\..\include\assert.h
+07-canopen-freertos\port.o: E:\Keil\ARM\ARMCC\Bin\..\include\inttypes.h
+07-canopen-freertos\port.o: E:\Keil\ARM\ARMCC\Bin\..\include\stdint.h
 07-canopen-freertos\port.o: ..\FreeModbus\mbport.h
 07-canopen-freertos\port.o: ..\FreeModbus\mbproto.h
-07-canopen-freertos\port.o: D:\Software\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+07-canopen-freertos\port.o: E:\Keil\ARM\ARMCC\Bin\..\include\stdio.h
 07-canopen-freertos\port.o: ../Core/Inc/modbus.h
 07-canopen-freertos\port.o: ../Core/Inc/main.h
 07-canopen-freertos\port.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h
@@ -22,7 +22,7 @@
 07-canopen-freertos\port.o: ../Drivers/CMSIS/Device/ST/STM32F1xx/Include/system_stm32f1xx.h
 07-canopen-freertos\port.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h
 07-canopen-freertos\port.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h
-07-canopen-freertos\port.o: D:\Software\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+07-canopen-freertos\port.o: E:\Keil\ARM\ARMCC\Bin\..\include\stddef.h
 07-canopen-freertos\port.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc_ex.h
 07-canopen-freertos\port.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_gpio.h
 07-canopen-freertos\port.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_gpio_ex.h
