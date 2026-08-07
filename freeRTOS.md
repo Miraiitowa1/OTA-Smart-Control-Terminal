@@ -201,3 +201,32 @@ int32_t osSemaphoreWait (osSemaphoreId semaphore_id, uint32_t millisec)
 ---
 
 ### 5. 软件定时器Timer
+#### 软件定时器在被创建之后，当经过设定的时钟计数值后会触发⽤⼾定义的回调函数。 定时精度与系统时钟的周期有关。⼀般系统利⽤SysTick 作为软件定时器的基础时钟，软件定时器的回调函数类似硬件的中断服务函数，所以，回调函数也要快进快出，⽽且回调函数中不能有任何阻塞任务运⾏的情况（软件定时器回调函数的上下⽂环境是任务）。FreeRTOS 提供的软件定时器⽀持单次模式和周期模式，单次模式和周期模式的定时时间到之后都会调⽤软件定时器的回调函数，⽤⼾可以在回调函数中加⼊要执⾏的⼯程代码。
+- 单次模式：当⽤⼾创建了定时器并启动了定时器后，定时时间到了，只执⾏⼀次回调函数之后就将该定时器删除，不再重新执⾏。
+- 周期模式：这个定时器会按照设置的定时时间循环执⾏回调函数，直到⽤⼾将定时器删除
+
+#### 软件定时器的创建与删除
+**osTimerCreate**: 创建⼀个软件定时器，并返回⼀个定时器ID
+```c
+osTimerId osTimerCreate (const osTimerDef_t *timer_def, os_timer_type type, void *argument)
+```
+##### type
+- 设置为 osTimerPeriodic，定时器⼯作模式就是周期模式， ⼀直会以⽤⼾指定的 xTimerPeriod 周期去执⾏回调函数。
+- 如果设置为 osTimerOnce，那么软件定时器就在⽤⼾指定的 xTimerPeriod 周期下运⾏⼀次后就进⼊休眠态
+
+**osTimerStart**: 启动软件定时器。该函数可以在中断中使⽤
+```c
+osStatus osTimerStart (osTimerId timer_id, uint32_t millisec)
+```
+
+**osTimerStop**: 停⽌⼀个软件定时器，让其进⼊休眠态。该函数可以在中断中使⽤
+```c
+osStatus osTimerStop (osTimerId timer_id)
+```
+
+**osTimerDelete**: 删除⼀个定时器
+```c
+osStatus osTimerDelete (osTimerId timer_id)
+```
+
+
