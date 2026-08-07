@@ -286,14 +286,55 @@ osEvent osSignalWait (int32_t signals, uint32_t millisec)
 - 减少内存碎⽚：通过合并相邻空闲块， heap_4.c 能有效减少内存碎⽚，特别是在内存频繁分配和释放的场景中。
 - 优化内存使⽤：维护多个链表以管理不同⼤⼩的内存块，提⾼了内存分配和回收的效率。
 - 灵活性和效率：⽐ heap_1.c 和 heap_2.c 提供了更灵活和⾼效的内存管理⽅式，适⽤于内存需求较⾼的应⽤。
+---
 
+### 8. 中断管理Interrupt
+#### 中断工作机制
+1. FreeRTOS 的中断管理⽀持：
+- 开/关中断。
+- 恢复中断。
+- 中断使能。
+- 中断屏蔽。
+- 可选择系统管理的中断优先级。
+当中断产⽣时，处理机将按如下的顺序执⾏：
+- 保存当前处理机状态信息
+- 载⼊异常或中断处理函数到 PC 寄存器
+- 把控制权转交给处理函数并开始执⾏
+- 当处理函数执⾏完成时，恢复处理器状态信息
+- 从异常或中断中返回到前⼀个程序执⾏点
+中断使得 CPU 可以在事件发⽣时才给予处理，⽽不必让 CPU 连续不断地查询是否有相应的事件发⽣。通过两条特殊指令：关中断和开中
+断可以让处理器不响应或响应中断，在关闭中断期间，通常处理器会把新产⽣的中断挂起，当中断打开时⽴刻进⾏响应，所以会有适当的
+延时响应中断，故⽤⼾在进⼊临界区的时候应快进快出。
+中断发⽣的环境有两种情况：在任务的上下⽂中，在中断服务函数处理上下⽂中
+![alt text](image-1.png)
+![alt text](image.png)
 
+2. FreeRTOS开关中断
+```c
+//开关中断函数
+//函数vPortBASEPRI()传递了⼀个0，这就对应了上⾯说到的，开启中断是将0写⼊BASEPRI寄存器
+#include "portmacro.h"
 
+#define portDISABLE_INTERRUPTS()        vPortRaiseBASEPRI()
+#define portENABLE_INTERRUPTS()         vPortSetBASEPRI(0)
+```
 
+3. 临界区的定义
+##### 在操作系统中，临界区（Critical Section）是指⼀段代码或数据区域，它必须在多任务环境下被互斥地访问，以确保数据的⼀致性和完整性。临界区的概念涉及到以下⼏个⽅⾯：
+- 临界区是指那些需要确保在任意时刻只有⼀个线程或进程能够访问的代码或数据段。
+- 这种保护是为了避免数据竞争、资源冲突或其他并发问题，确保操作的原⼦性
 
+##### task级临界段代码保护
+```c
+//当进⼊临界区时，中断被屏蔽，临界区代码⽆法被打断，只有当所有的临界段代码都退出以后才会使能中断！
+//注:当进⼊临界区时，优先级低于configMAX_SYSCALL_INTERRUPT_PRIORITY 的中断得不到及响应，所以临界区代码⼀定要精简
+#define taskENTER_CRITICAL()        portENTER_CRITICAL()
+#define taskEXIT_CRITICAL()         portEXIT_CRITICAL()
+```
 
-
-
-
-
-
+##### ISR级临界段代码保护
+```c
+//函数taskENTER_CRITICAL_FROM_ISR()和taskEXIT_CRITICAL_FROM_ISR()中断级别临界段代码保护，是⽤在中断服务程序中的，⽽且这个中断的优先级⼀定要低于configMAX_SYSCALL_INTERRUPT_PRIORITY
+#define taskENTER_CRITICAL_FROM_ISR()       portSET_INTERRUPT_MASK_FROM_ISR()
+#define taskEXIT_CRITICAL_FROM_ISR(x)       portCLEAR_INTERRUPT_MASK_FROM_ISR(x)
+```
